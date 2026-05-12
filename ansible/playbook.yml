@@ -1,0 +1,5 @@
+---
+- name: Example playbook
+  hosts: vms
+  roles:
+    - role: belyaev.script_config.run
