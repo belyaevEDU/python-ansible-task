@@ -23,5 +23,5 @@ for _ in range(5):
     r = requests.get(BASE_URL + POSSIBLE_STATUS_CODES, timeout=5, allow_redirects=False)
     try:
         handleCode(r)
-    except Exception as e:
+    except requests.HTTPError as e:
         print(e)
