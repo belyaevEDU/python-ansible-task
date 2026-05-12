@@ -10,11 +10,10 @@ def handle_code(response: requests.Response) -> None:
 
     code = response.status_code
     if 100 <= code and code < 400:
-        logging.info(f"Status code: {code}")
         body = response.content.decode()
         if body == "":
             body = "<No body>"
-        logging.info(f"Body: {body}")
+        logging.info(f"Status code: {code}. Body: {body}")
 
 # Оригинальный сервис отключили из-за наплыва трафика (ссылка в README), поэтому использую зеркало
 BASE_URL = "https://tools-httpstatus.pickup-services.com/random/"
