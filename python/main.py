@@ -5,7 +5,7 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 
-def handleCode(response: requests.Response) -> None:
+def handle_code(response: requests.Response) -> None:
     response.raise_for_status()
 
     code = response.status_code
@@ -27,7 +27,7 @@ def main():
     for _ in range(5):
         r = requests.get(BASE_URL + POSSIBLE_STATUS_CODES, timeout=5, allow_redirects=False)
         try:
-            handleCode(r)
+            handle_code(r)
         except requests.HTTPError as e:
             logger.error(f"Exception: {e}")
 
