@@ -50,3 +50,6 @@
   ansible.builtin.systemd_service:
     name: docker
     state: started
+
+- name: Ensure docker is up
+  ansible.builtin.command: docker --version
