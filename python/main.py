@@ -6,14 +6,13 @@ logger = logging.getLogger(__name__)
 
 
 def handle_code(response: requests.Response) -> None:
-    response.raise_for_status()
+    response.raise_for_status() # raises HTTPError in case of 4xx-5xx
 
     code = response.status_code
-    if 100 <= code and code < 400:
-        body = response.content.decode()
-        if body == "":
-            body = "<No body>"
-        logging.info(f"Status code: {code}. Body: {body}")
+    body = response.content.decode()
+    if body == "":
+        body = "<No body>"
+    logging.info(f"Status code: {code}. Body: {body}")
 
 # Оригинальный сервис отключили из-за наплыва трафика (ссылка в README), поэтому использую зеркало
 BASE_URL = "https://tools-httpstatus.pickup-services.com/random/"
