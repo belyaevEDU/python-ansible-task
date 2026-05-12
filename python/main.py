@@ -14,8 +14,9 @@ POSSIBLE_STATUS_CODES = "100-103,200-208,226,300-308,400-426,427-428,431,440,449
 # Оригинальный сервис отключили из-за наплыва трафика (ссылка в README), поэтому использую зеркало
 BASE_URL = "https://tools-httpstatus.pickup-services.com/random/"
 
-r = requests.get(BASE_URL + POSSIBLE_STATUS_CODES)
-try:
-    handleCode(r)
-except Exception as e:
-    print(e)
+for _ in range(5):
+    r = requests.get(BASE_URL + POSSIBLE_STATUS_CODES)
+    try:
+        handleCode(r)
+    except Exception as e:
+        print(e)
