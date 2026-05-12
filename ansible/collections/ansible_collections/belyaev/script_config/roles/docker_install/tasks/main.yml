@@ -23,7 +23,7 @@
     name: "Docker"
     types: deb
     uris: https://download.docker.com/linux/ubuntu
-    suites: jammy
+    suites: "{{ ubuntu_codename }}"
     components: stable
     architectures: amd64
     signed_by: https://download.docker.com/linux/ubuntu/gpg
