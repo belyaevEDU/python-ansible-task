@@ -17,3 +17,5 @@
 Для установки Docker была написана роль belyaev.script_config.docker_install, которая хранится в [ansible/collections](/ansible/collections/ansible_collections/belyaev/script_config/roles/docker_install/)
 
 Остальные шаги прописаны в [плейбуке](/ansible/playbook.yml).
+
+Для тестирования я поднимал виртуальную машину на VirtualBox с образом Ubuntu Server 26.04 с bridged сетью.
