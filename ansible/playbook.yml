@@ -3,4 +3,14 @@
   hosts: vms
   become: true
   roles:
-    - role: belyaev.script_config.docker_install
+  - role: belyaev.script_config.docker_install
+
+- name: Launch image & check the status code
+  hosts: vms
+  tasks:
+  - name: Launch image
+    community.docker.docker_container:
+      name: python-script
+      image: belyaevedu/python-ansible-task
+    register: docker_run
+    failed_when: docker_run.container.State.ExitCode != 0
