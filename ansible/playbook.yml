@@ -16,3 +16,7 @@
       recreate: true
     register: docker_run
     failed_when: docker_run.container.State.ExitCode != 0
+  - name: Remove container
+    community.docker.docker_container:
+      name: python-script
+      state: absent
