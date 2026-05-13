@@ -1,5 +1,6 @@
 ---
-- name: Example playbook
+- name: Install docker
   hosts: vms
+  become: true
   roles:
-    - role: belyaev.script_config.run
+    - role: belyaev.script_config.docker_install
