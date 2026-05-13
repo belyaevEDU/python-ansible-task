@@ -16,6 +16,9 @@
       recreate: true
     register: docker_run
     failed_when: docker_run.container.State.ExitCode != 0
+  - name: Output docker logs
+    ansible.builtin.debug:
+      msg: "{{ docker_run.container.Output }}"
   - name: Remove container
     community.docker.docker_container:
       name: python-script
