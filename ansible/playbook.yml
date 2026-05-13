@@ -3,23 +3,27 @@
   hosts: vms
   become: true
   roles:
-  - role: belyaev.script_config.docker_install
+    - role: belyaev.script_config.docker_install
 
 - name: Launch image & check the status code
   hosts: vms
   tasks:
-  - name: Launch image
-    community.docker.docker_container:
-      name: python-script
-      image: belyaevedu/python-ansible-task
-      detach: false
-      recreate: true
-    register: docker_run
-    failed_when: docker_run.container.State.ExitCode != 0
-  - name: Output docker logs
-    ansible.builtin.debug:
-      msg: "{{ docker_run.container.Output }}"
-  - name: Remove container
-    community.docker.docker_container:
-      name: python-script
-      state: absent
+    - name: Launch image
+      community.docker.docker_container:
+        name: python-script
+        image: belyaevedu/python-ansible-task
+        detach: false
+        recreate: true
+      register: docker_run
+      ignore_errors: true
+    - name: Output docker logs
+      ansible.builtin.debug:
+        msg: "{{ docker_run.container.Output }}"
+    - name: Assert exit code is zero
+      ansible.builtin.assert:
+        that:
+          - docker_run.container.State.ExitCode == 0
+    - name: Remove container
+      community.docker.docker_container:
+        name: python-script
+        state: absent
