@@ -8,7 +8,7 @@ No prerequisites
 
 ## Role Variables
 
-ubuntu_codename - the host machine's ubuntu version codename. docker's ubuntu apt repository "suite" parameter is the codename
+docker_install_ubuntu_codename - the host machine's ubuntu version codename. docker's ubuntu apt repository "suite" parameter is the codename
 
 ## Example Playbook
 
