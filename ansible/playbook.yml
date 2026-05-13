@@ -12,5 +12,7 @@
     community.docker.docker_container:
       name: python-script
       image: belyaevedu/python-ansible-task
+      detach: false
+      recreate: true
     register: docker_run
     failed_when: docker_run.container.State.ExitCode != 0
